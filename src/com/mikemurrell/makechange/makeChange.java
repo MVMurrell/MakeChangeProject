@@ -20,6 +20,7 @@ public class makeChange {
 		double tendOriginal;
 		double priceDiff;
 		boolean goAhead;
+		int [] denominations = new int[7];
 		do {
 			System.out.print("Enter the price of the item: ");
 			priceOriginal = input.nextDouble();
@@ -42,7 +43,7 @@ public class makeChange {
 				} else {
 					priceDiff = priceDiff * (-1);
 					amt20 = (int) (priceDiff / 2000);
-					loPennies = priceDiff % 2000;
+					loPennies = priceDiff % 2000;//loPennies carries the remainder of pennies from the last denomination.
 					amt10 = (int) (loPennies / 1000);
 					loPennies = loPennies % 1000;
 					amt5 = (int) (loPennies / 500);
@@ -55,16 +56,33 @@ public class makeChange {
 					loPennies = (loPennies % 10);
 					amtNickel = (int) (loPennies / 5);
 					loPennies = (loPennies % 5);
-
+					
+					
 					System.out.println("Return to the customer:");
-					System.out.println(amt20 + " 20 dollar bills");
-					System.out.println(amt10 + " 10 dollar bills");
-					System.out.println(amt5 + " 5 dollar bills");
-					System.out.println(amt1 + " 1 dollar bills");
-					System.out.println(amtQuarter + " Quarters");
-					System.out.println(amtDime + " Dimes");
-					System.out.println(amtNickel + " Nickels");
-					System.out.println((int)loPennies + " Pennies");
+					if(amt20 > 0) {
+					System.out.println(amt20 + " 20 dollar bill ");
+					}
+					if(amt10 > 0) {
+					System.out.println(amt10 + " 10 dollar bill ");
+					}
+					if(amt5 > 0) {
+					System.out.println(amt5 + " 5 dollar bill ");
+					}
+					if(amt1 > 0) {
+					System.out.println(amt1 + " 1 dollar bill ");
+					}
+					if(amtQuarter > 0) {
+					System.out.println(amtQuarter + " Quarter ");
+					}
+					if(amtDime > 0) {
+					System.out.println(amtDime + " Dime ");
+					}
+					if(amtNickel > 0) {
+					System.out.println(amtNickel + " Nickel ");
+					}
+					if(loPennies > 0) {
+					System.out.println((int) loPennies + " Pennie");
+					}
 					System.out.println(" Hand the custmomer their receipt and wish them a good day.");
 					goAhead = true;
 
@@ -80,7 +98,7 @@ public class makeChange {
 				goAhead = false;
 			}
 		} while (goAhead == true);
-		
+
 		System.out.println("Goodbye.");
 
 		input.close();
@@ -89,6 +107,3 @@ public class makeChange {
 
 }
 
-// break payment amount into pennies
-// use modulous denominator that is equal to the change in pennies
-// use divider that is also equal to the change in pennies
